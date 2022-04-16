@@ -26,6 +26,3 @@ jobs:
 
       - name: lint package
         run: make lint
-
-        env:
-          CI: true

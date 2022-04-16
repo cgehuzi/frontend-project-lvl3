@@ -23,6 +23,3 @@ jobs:
 
       - name: build package
         run: make build
-
-        env:
-          CI: true

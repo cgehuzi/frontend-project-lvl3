@@ -26,6 +26,3 @@ jobs:
 
       - name: test package
         run: make test
-
-        env:
-          CI: true
