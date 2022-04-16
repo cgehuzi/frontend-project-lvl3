@@ -17,13 +17,25 @@
   },
   "homepage": "https://github.com/cgehuzi/frontend-project-lvl3#readme",
   "devDependencies": {
-    "@jest/globals": "^27.5.1",
-    "eslint": "^8.10.0",
+    "@babel/core": "^7.17.9",
+    "@babel/preset-env": "^7.16.11",
+    "autoprefixer": "^10.4.4",
+    "babel-loader": "^8.2.4",
+    "css-loader": "^6.7.1",
+    "cssnano": "^5.1.7",
+    "eslint": "^8.13.0",
     "eslint-config-airbnb-base": "^15.0.0",
-    "eslint-plugin-import": "^2.25.4",
+    "eslint-plugin-import": "^2.26.0",
     "html-webpack-plugin": "^5.5.0",
     "jest": "^27.5.1",
-    "webpack": "^5.71.0",
-    "webpack-cli": "^4.9.2"
+    "mini-css-extract-plugin": "^2.6.0",
+    "postcss": "^8.4.12",
+    "postcss-loader": "^6.2.1",
+    "sass": "^1.50.0",
+    "sass-loader": "^12.6.0",
+    "style-loader": "^3.3.1",
+    "webpack": "^5.72.0",
+    "webpack-cli": "^4.9.2",
+    "webpack-dev-server": "^4.8.1"
   }
 }
