@@ -1,5 +1,3 @@
-const jest = (a) => {
-  return a + a;
-};
+const jest = (a) => a + a;
 
 export default jest;
