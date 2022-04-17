@@ -1,3 +1,4 @@
+import axios from 'axios';
 import * as yup from 'yup';
 
 const validation = (state, elements) => {
@@ -16,8 +17,22 @@ const validation = (state, elements) => {
       state.form.error = null;
       state.form.state = 'valid';
 
+      state.form.state = 'processing';
+      axios
+        .get('https://lorem-rss.herokuapp.com/feed?unit=second&interval=5')
+        .then(function (response) {
+          // handle success
+          console.log(response);
+          state.form.state = 'filling';
+        })
+        .catch(function (error) {
+          // handle error
+          console.log(error);
+          state.form.error = error;
+          state.form.state = 'invalid';
+        });
+
       state.feeds = [...state.feeds, { url: elements.input.value }];
-      state.form.state = 'filling';
     })
     .catch((err) => {
       state.form.error = err;
