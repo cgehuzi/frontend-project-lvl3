@@ -1,40 +1,40 @@
 import onChange from 'on-change';
 
-const showError = (state, elements) => {
-  elements.feedback.classList.add('d-block', 'invalid-feedback');
-  elements.feedback.textContent = state.form.error.message;
-  elements.input.classList.add('is-invalid');
-};
+export default (state, i18nextInstance, elements) => {
+  const showError = () => {
+    elements.feedback.classList.add('d-block', 'invalid-feedback');
+    elements.feedback.textContent = i18nextInstance.t(state.form.error.message);
+    elements.input.classList.add('is-invalid');
+  };
 
-const showSuccess = (state, elements) => {
-  elements.feedback.classList.add('d-block');
-  elements.feedback.textContent = state.form.success.message;
-};
+  const showSuccess = () => {
+    elements.feedback.classList.add('d-block');
+    elements.feedback.textContent = i18nextInstance.t('success');
+  };
 
-const hideFeedback = (elements) => {
-  elements.feedback.classList.remove('d-block', 'invalid-feedback');
-  elements.input.classList.remove('is-invalid');
-};
+  const hideFeedback = () => {
+    elements.feedback.classList.remove('d-block', 'invalid-feedback');
+    elements.input.classList.remove('is-invalid');
+  };
 
-const resetForm = (elements) => {
-  elements.input.value = '';
-  elements.input.focus();
-};
+  const resetForm = () => {
+    elements.input.value = '';
+    elements.input.focus();
+  };
 
-export default (state, elements) => {
   const watchedState = onChange(state, (path, value) => {
     if (path === 'form.state') {
       switch (value) {
         case 'invalid':
-          showError(state, elements);
+          showError();
           break;
 
         case 'valid':
-          hideFeedback(elements);
+          hideFeedback();
           break;
 
         case 'filling':
-          resetForm(elements);
+          resetForm();
           break;
 
         default:
@@ -42,7 +42,7 @@ export default (state, elements) => {
       }
     }
     if (path === 'feeds') {
-      showSuccess(state, elements);
+      showSuccess();
     }
   });
 

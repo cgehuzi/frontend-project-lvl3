@@ -4,9 +4,9 @@ const validation = (state, elements) => {
   const feedUrls = state.feeds.map((feed) => feed.url);
   const schema = yup
     .string()
-    .required('Link is required')
-    .url('Link must be a valid URL')
-    .notOneOf(feedUrls, 'This RSS has already been added');
+    .required('error.required')
+    .url('error.url')
+    .notOneOf(feedUrls, 'error.notOneOf');
 
   state.form.state = 'processing';
 

@@ -1,0 +1,10 @@
+{
+  "translation": {
+    "error": {
+      "required": "Link is required",
+      "url": "Link must be a valid URL",
+      "notOneOf": "This RSS has already been loaded"
+    },
+    "success": "RSS uploaded successfully"
+  }
+}

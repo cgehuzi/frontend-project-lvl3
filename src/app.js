@@ -1,19 +1,7 @@
-import watch from './view.js';
+import view from './view.js';
 import validation from './utils.js';
 
-export default () => {
-  const state = {
-    form: {
-      state: 'filling',
-      valid: true,
-      error: null,
-      success: {
-        message: 'RSS uploaded successfully',
-      },
-    },
-    feeds: [],
-  };
-
+export default (state, i18nextInstance) => {
   const elements = {
     form: document.querySelector('.rss-form'),
     input: document.querySelector('.rss-input'),
@@ -21,7 +9,7 @@ export default () => {
     feedback: document.querySelector('.rss-feedback'),
   };
 
-  const watchedState = watch(state, elements);
+  const watchedState = view(state, i18nextInstance, elements);
 
   elements.form.addEventListener('submit', (e) => {
     e.preventDefault();
