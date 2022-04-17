@@ -1,6 +1,6 @@
 import 'bootstrap';
 import './scss/main.scss';
 
-const jest = (a) => a + a;
+import app from './app.js';
 
-export default jest;
+app();

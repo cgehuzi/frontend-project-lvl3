@@ -14,20 +14,21 @@
                 <div class="col-md-10 col-lg-8 mx-auto text-white">
                     <h1 class="display-3 mb-0">RSS Aggregator</h1>
                     <p class="lead">Start reading RSS today! It's easy! It's fun!</p>
-                    <form class="text-body">
+                    <form class="rss-form text-body">
                         <div class="row">
                             <div class="col-12 col-sm">
                                 <div class="form-floating">
-                                    <input type="text" class="form-control w-100" id="urlInput" placeholder="https://example.rss">
+                                    <input type="text" class="rss-input form-control w-100" id="urlInput" placeholder="https://example.rss" name="url" autofocus required>
                                     <label for="urlInput">RSS link</label>
-                                  </div>
+                                </div>
                             </div>
                             <div class="col-12 col-sm-auto mt-3 mt-sm-0">
-                                <button type="submit" class="h-100 btn btn-lg btn-primary px-sm-5 w-100">Submit</button>
+                                <button type="submit" class="rss-submit h-100 btn btn-lg btn-primary px-sm-5 w-100">Submit</button>
                             </div>
                         </div>
                     </form>
                     <p class="mt-2 mb-0 text-muted">Example: https://ru.hexlet.io/lessons.rss</p>
+                    <p class="rss-feedback valid-feedback mb-0"></p>
                 </div>
             </div>
         </section>
