@@ -1,10 +1,17 @@
 import onChange from 'on-change';
 
 export default (state, i18nextInstance, elements) => {
+  const disableSubmit = (disabled) => {
+    elements.input.readOnly = disabled;
+    elements.submit.disabled = disabled;
+  };
+
   const showError = () => {
     elements.feedback.classList.add('d-block', 'invalid-feedback');
     elements.feedback.textContent = i18nextInstance.t(state.form.error.message);
-    elements.input.classList.add('is-invalid');
+    if (state.form.valid === false) {
+      elements.input.classList.add('is-invalid');
+    }
   };
 
   const showSuccess = () => {
@@ -25,24 +32,41 @@ export default (state, i18nextInstance, elements) => {
   const watchedState = onChange(state, (path, value) => {
     if (path === 'form.state') {
       switch (value) {
-        case 'invalid':
-          showError();
-          break;
-
-        case 'valid':
-          hideFeedback();
-          break;
-
         case 'filling':
+          disableSubmit(false);
+          break;
+
+        case 'processing':
+          disableSubmit(true);
+          break;
+
+        case 'finished':
+          disableSubmit(false);
+          showSuccess();
           resetForm();
           break;
 
+        case 'failed':
+          disableSubmit(false);
+          showError();
+          break;
+
         default:
+          disableSubmit(false);
           break;
       }
     }
-    if (path === 'feeds') {
-      showSuccess();
+
+    if (path === 'form.valid') {
+      switch (value) {
+        case false:
+          showError();
+          break;
+
+        default:
+          hideFeedback();
+          break;
+      }
     }
   });
 

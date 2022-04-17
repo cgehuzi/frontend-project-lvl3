@@ -6,8 +6,11 @@ export default () => {
   const state = {
     form: {
       state: 'filling',
-      valid: true,
+      valid: null,
       error: null,
+      data: {
+        url: '',
+      },
     },
     feeds: [],
   };

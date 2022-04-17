@@ -1,5 +1,5 @@
 import view from './view.js';
-import validation from './utils.js';
+import submit from './utils.js';
 
 export default (state, i18nextInstance) => {
   const elements = {
@@ -13,6 +13,7 @@ export default (state, i18nextInstance) => {
 
   elements.form.addEventListener('submit', (e) => {
     e.preventDefault();
-    validation(watchedState, elements);
+    watchedState.form.data.url = elements.input.value;
+    submit(watchedState);
   });
 };

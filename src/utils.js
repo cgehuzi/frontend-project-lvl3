@@ -1,7 +1,12 @@
 import axios from 'axios';
 import * as yup from 'yup';
 
-const validation = (state, elements) => {
+const proxy = 'https://allorigins.hexlet.app/get?url=';
+
+export default (state) => {
+  state.form.valid = null;
+
+  const { url } = state.form.data;
   const feedUrls = state.feeds.map((feed) => feed.url);
   const schema = yup
     .string()
@@ -9,35 +14,33 @@ const validation = (state, elements) => {
     .url('error.url')
     .notOneOf(feedUrls, 'error.notOneOf');
 
-  state.form.state = 'processing';
-
   schema
-    .validate(elements.input.value)
+    .validate(url)
     .then(() => {
       state.form.error = null;
-      state.form.state = 'valid';
+      state.form.valid = true;
 
       state.form.state = 'processing';
-      axios
-        .get('https://lorem-rss.herokuapp.com/feed?unit=second&interval=5')
-        .then(function (response) {
+      axios({
+        method: 'get',
+        url: `${proxy}${url}`,
+        timeout: 10000,
+      })
+        .then((response) => {
           // handle success
           console.log(response);
-          state.form.state = 'filling';
+          state.feeds = [...state.feeds, { url }];
+          state.form.state = 'finished';
         })
-        .catch(function (error) {
+        .catch((error) => {
           // handle error
           console.log(error);
           state.form.error = error;
-          state.form.state = 'invalid';
+          state.form.state = 'failed';
         });
-
-      state.feeds = [...state.feeds, { url: elements.input.value }];
     })
     .catch((err) => {
       state.form.error = err;
-      state.form.state = 'invalid';
+      state.form.valid = false;
     });
 };
-
-export default validation;
