@@ -1,7 +1,6 @@
 import axios from 'axios';
 import * as yup from 'yup';
-
-const proxy = 'https://allorigins.hexlet.app/get?url=';
+import parseRss from './parser';
 
 export default (state) => {
   state.form.valid = null;
@@ -23,18 +22,16 @@ export default (state) => {
       state.form.state = 'processing';
       axios({
         method: 'get',
-        url: `${proxy}${url}`,
+        url: `https://allorigins.hexlet.app/get?disableCache=true&url=${url}`,
         timeout: 10000,
       })
         .then((response) => {
-          // handle success
-          console.log(response);
-          state.feeds = [...state.feeds, { url }];
+          const rss = parseRss(response.data.contents);
+          state.feeds = [...state.feeds, { url, ...rss.feed }];
+          state.posts = [...state.posts, ...rss.posts];
           state.form.state = 'finished';
         })
         .catch((error) => {
-          // handle error
-          console.log(error);
           state.form.error = error;
           state.form.state = 'failed';
         });

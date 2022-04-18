@@ -1,9 +1,13 @@
 {
   "translation": {
+    "feeds": "Feeds",
+    "posts": "Posts",
+    "toSource": "Go to source",
     "error": {
       "required": "Link is required",
       "url": "Link must be a valid URL",
-      "notOneOf": "This RSS has already been loaded"
+      "notOneOf": "This RSS has already been loaded",
+      "notRss": "The resource does'nt contain valid RSS"
     },
     "success": "RSS uploaded successfully"
   }

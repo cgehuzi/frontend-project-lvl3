@@ -2,7 +2,6 @@ install:
 	npm ci
 
 dev:
-	rm -rf dist
 	npx webpack-dev-server --open
 
 build:
