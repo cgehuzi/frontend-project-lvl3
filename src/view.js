@@ -128,8 +128,6 @@ export default (state, i18nextInstance, elements) => {
           disableSubmit(false);
           showSuccess();
           resetForm();
-          renderFeeds();
-          renderPosts();
           break;
 
         case 'failed':
@@ -153,6 +151,14 @@ export default (state, i18nextInstance, elements) => {
           hideFeedback();
           break;
       }
+    }
+
+    if (path === 'feeds') {
+      renderFeeds();
+    }
+
+    if (path === 'posts') {
+      renderPosts();
     }
   });
 
