@@ -3,6 +3,7 @@
     "feeds": "Feeds",
     "posts": "Posts",
     "toSource": "Go to source",
+    "details": "Details",
     "error": {
       "required": "Link is required",
       "url": "Link must be a valid URL",

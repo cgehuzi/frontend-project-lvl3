@@ -1,6 +1,9 @@
 import onChange from 'on-change';
+import _ from 'lodash';
 
 export default (state, i18nextInstance, elements) => {
+  let watchedState;
+
   const disableSubmit = (disabled) => {
     elements.input.readOnly = disabled;
     elements.submit.disabled = disabled;
@@ -62,7 +65,7 @@ export default (state, i18nextInstance, elements) => {
       title.textContent = feed.title;
 
       const description = document.createElement('p');
-      description.classList.add('m-0', 'small', 'text-black-50');
+      description.classList.add('mt-2', 'mb-0', 'small', 'text-black-50', 'lh-sm');
       description.textContent = feed.description;
 
       const link = document.createElement('a');
@@ -77,8 +80,28 @@ export default (state, i18nextInstance, elements) => {
     });
 
     card.append(list);
-    elements.feeds.innerHTML = '';
-    elements.feeds.append(card);
+    elements.feedsWrap.innerHTML = '';
+    elements.feedsWrap.append(card);
+  };
+
+  const markAsRead = (id) => {
+    const post = _.find(watchedState.posts, { id });
+    post.isRead = true;
+  };
+
+  const showDetails = (id) => {
+    const post = _.find(state.posts, { id });
+
+    const title = document.createElement('h5');
+    title.textContent = post.title;
+
+    const description = document.createElement('p');
+    description.classList.add('small');
+    description.textContent = post.description;
+
+    elements.modalDetails.innerHTML = '';
+    elements.modalDetails.append(title, description);
+    elements.modalLink.href = post.link;
   };
 
   const renderPosts = () => {
@@ -97,23 +120,41 @@ export default (state, i18nextInstance, elements) => {
         'border-0',
       );
 
-      const title = document.createElement('a');
-      title.classList.add('fw-bold');
-      title.href = post.link;
-      title.target = '_blank';
-      title.rel = 'noopener noreferrer';
-      title.textContent = post.title;
+      const link = document.createElement('a');
+      if (post.isRead) {
+        link.classList.add('fw-regular', 'link-secondary');
+      } else {
+        link.classList.add('fw-bold');
+      }
+      link.href = post.link;
+      link.target = '_blank';
+      link.rel = 'noopener noreferrer';
+      link.textContent = post.title;
+      link.addEventListener('click', () => {
+        markAsRead(post.id);
+      });
 
-      item.append(title);
+      const button = document.createElement('button');
+      button.classList.add('btn', 'btn-outline-dark', 'btn-sm', 'ms-4');
+      button.type = 'button';
+      button.dataset.bsToggle = 'modal';
+      button.dataset.bsTarget = '.rss-modal';
+      button.textContent = i18nextInstance.t('details');
+      button.addEventListener('click', () => {
+        showDetails(post.id);
+        markAsRead(post.id);
+      });
+
+      item.append(link, button);
       list.append(item);
     });
 
     card.append(list);
-    elements.posts.innerHTML = '';
-    elements.posts.append(card);
+    elements.postsWrap.innerHTML = '';
+    elements.postsWrap.append(card);
   };
 
-  const watchedState = onChange(state, (path, value) => {
+  watchedState = onChange(state, (path, value) => {
     if (path === 'form.state') {
       switch (value) {
         case 'filling':
@@ -153,11 +194,11 @@ export default (state, i18nextInstance, elements) => {
       }
     }
 
-    if (path === 'feeds') {
+    if (path.match(/feeds/)) {
       renderFeeds();
     }
 
-    if (path === 'posts') {
+    if (path.match(/posts/)) {
       renderPosts();
     }
   });

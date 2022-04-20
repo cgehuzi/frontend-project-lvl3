@@ -9,7 +9,9 @@ let timeoutID;
 
 const checkNewPosts = (state) => {
   state.feeds.forEach((feed) => {
-    const stateFeedPosts = state.posts.filter((post) => feed.rss === post.rss);
+    const stateFeedPosts = state.posts
+      .filter((post) => feed.rss === post.rss)
+      .map((post) => ({ ...post, isRead: false }));
 
     axios({
       method: 'get',

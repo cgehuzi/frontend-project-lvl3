@@ -13,6 +13,7 @@ const getPosts = (rss, feed) => {
       link,
       title,
       description,
+      isRead: false,
     };
     const id = objectHash(post);
 

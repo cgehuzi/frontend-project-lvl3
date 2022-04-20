@@ -7,8 +7,11 @@ export default (state, i18nextInstance) => {
     input: document.querySelector('.rss-input'),
     submit: document.querySelector('.rss-submit'),
     feedback: document.querySelector('.rss-feedback'),
-    feeds: document.querySelector('.rss-feeds'),
-    posts: document.querySelector('.rss-posts'),
+    feedsWrap: document.querySelector('.rss-feeds'),
+    postsWrap: document.querySelector('.rss-posts'),
+    modal: document.querySelector('.rss-modal'),
+    modalDetails: document.querySelector('.rss-modal-details'),
+    modalLink: document.querySelector('.rss-modal-link'),
   };
 
   const watchedState = view(state, i18nextInstance, elements);
