@@ -13,6 +13,14 @@ export default {
         test: /\.(c|sc|sa)ss$/i,
         use: [MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader', 'sass-loader'],
       },
+      {
+        test: /\/favicon\//i,
+        loader: 'file-loader',
+        options: {
+          name: '[name].[ext]',
+          outputPath: '/',
+        },
+      },
     ],
   },
   plugins: [
