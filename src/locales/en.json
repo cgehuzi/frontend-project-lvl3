@@ -1,5 +1,14 @@
 {
   "translation": {
+    "static": {
+      "title": "RSS Aggregator",
+      "subtitle": "Start reading RSS today! It's easy! It's fun!",
+      "label": "RSS link",
+      "example": "Example: https://ru.hexlet.io/lessons.rss",
+      "submit": "Add",
+      "modalTitle": "Post details",
+      "modalLink": "Read completely"
+    },
     "feeds": "Feeds",
     "posts": "Posts",
     "toSource": "Go to source",

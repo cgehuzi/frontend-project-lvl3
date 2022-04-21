@@ -1,5 +1,14 @@
 {
   "translation": {
+    "static": {
+      "title": "RSS агрегатор",
+      "subtitle": "Начните читать RSS сегодня! Это легко, это красиво.",
+      "label": "Ссылка RSS",
+      "example": "Пример: https://ru.hexlet.io/lessons.rss",
+      "submit": "Добавить",
+      "modalTitle": "Подробности поста",
+      "modalLink": "Читать полностью"
+    },
     "feeds": "Фиды",
     "posts": "Посты",
     "toSource": "Перейти к источнику",

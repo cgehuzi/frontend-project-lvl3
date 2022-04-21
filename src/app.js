@@ -14,6 +14,26 @@ export default (state, i18nextInstance) => {
     modalLink: document.querySelector('.rss-modal-link'),
   };
 
+  const staticHtml = {
+    title: document.querySelector('.static-title'),
+    subtitle: document.querySelector('.static-subtitle'),
+    label: document.querySelector('.static-label'),
+    example: document.querySelector('.static-example'),
+    submit: document.querySelector('.static-submit'),
+    modalTitle: document.querySelector('.static-modal-title'),
+    modalLink: document.querySelector('.static-modal-link'),
+  };
+
+  document.body.parentElement.lang = i18nextInstance.language;
+  document.title = i18nextInstance.t('static.title');
+  staticHtml.title.textContent = i18nextInstance.t('static.title');
+  staticHtml.subtitle.textContent = i18nextInstance.t('static.subtitle');
+  staticHtml.label.textContent = i18nextInstance.t('static.label');
+  staticHtml.example.textContent = i18nextInstance.t('static.example');
+  staticHtml.submit.textContent = i18nextInstance.t('static.submit');
+  staticHtml.modalTitle.textContent = i18nextInstance.t('static.modalTitle');
+  staticHtml.modalLink.textContent = i18nextInstance.t('static.modalLink');
+
   const watchedState = view(state, i18nextInstance, elements);
 
   elements.form.addEventListener('submit', (e) => {
