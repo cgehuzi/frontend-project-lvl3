@@ -96,7 +96,7 @@ export default (state, i18nextInstance, elements) => {
     title.textContent = post.title;
 
     const description = document.createElement('p');
-    description.classList.add('small');
+    description.classList.add('small', 'text-break');
     description.textContent = post.description;
 
     elements.modalDetails.innerHTML = '';
@@ -117,7 +117,7 @@ export default (state, i18nextInstance, elements) => {
         'd-flex',
         'justify-content-between',
         'align-items-baseline',
-        'border-0',
+        'border-0'
       );
 
       const link = document.createElement('a');
