@@ -1,4 +1,4 @@
-# RSS Aggregator
+# RSS Reader
 
 Создано в рамках учебного проекта [RSS агрегатор](https://ru.hexlet.io/programs/frontend/projects/11) от [Хекслет](https://ru.hexlet.io/).
 
@@ -12,6 +12,8 @@
 ## Описание
 
 RSS агрегатор – приложение, позволяющее получать данные из нескольких RSS-потоков и беспрерывно следить за их обновлением.
+
+![RSS Reader's demo](/demo.png)
 
 ## Основные инструкции
 

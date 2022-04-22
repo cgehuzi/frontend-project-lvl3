@@ -1,6 +1,6 @@
 {
-  "name": "RSS Aggregator",
-  "short_name": "RSS Aggregator",
+  "name": "RSS Reader",
+  "short_name": "RSS Reader",
   "icons": [
     {
       "src": "/android-chrome-192x192.png",

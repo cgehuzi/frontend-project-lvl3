@@ -1,7 +1,7 @@
 {
   "translation": {
     "static": {
-      "title": "RSS Aggregator",
+      "title": "RSS Reader",
       "subtitle": "Start reading RSS today! It's easy! It's fun!",
       "label": "RSS link",
       "example": "Example: https://ru.hexlet.io/lessons.rss",
