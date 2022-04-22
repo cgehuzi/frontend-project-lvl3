@@ -11,7 +11,7 @@ export default (state, i18nextInstance, elements) => {
 
   const showError = () => {
     elements.feedback.classList.add('invalid-feedback');
-    elements.feedback.textContent = i18nextInstance.t(state.form.error.message);
+    elements.feedback.textContent = i18nextInstance.t(state.form.error);
     if (state.form.valid === false) {
       elements.input.classList.add('is-invalid');
     }

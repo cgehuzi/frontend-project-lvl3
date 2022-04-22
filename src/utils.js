@@ -72,12 +72,13 @@ export default (state) => {
           timeoutID = setTimeout(() => checkNewPosts(state), timeoutPeriod);
         })
         .catch((error) => {
-          state.form.error = error;
+          console.log(error.status);
+          state.form.error = error.status ? error.message : 'error.network';
           state.form.state = 'failed';
         });
     })
     .catch((err) => {
-      state.form.error = err;
+      state.form.error = err.message;
       state.form.valid = false;
     });
 };

@@ -17,7 +17,8 @@
       "required": "Link is required",
       "url": "Link must be a valid URL",
       "notOneOf": "This RSS has already been loaded",
-      "notRss": "The resource does'nt contain valid RSS"
+      "notRss": "The resource does'nt contain valid RSS",
+      "network": "Network Error"
     },
     "success": "RSS uploaded successfully"
   }
