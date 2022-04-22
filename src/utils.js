@@ -6,8 +6,7 @@ import parseRss from './parser.js';
 const timeoutPeriod = 5000;
 let timeoutID;
 
-const proxy = (url) =>
-  `https://allorigins.hexlet.app/get?url=${encodeURIComponent(url)}&disableCache=true`;
+const proxy = (url) => `https://allorigins.hexlet.app/get?url=${encodeURIComponent(url)}&disableCache=true`;
 
 const checkNewPosts = (state) => {
   state.feeds.forEach((feed) => {
