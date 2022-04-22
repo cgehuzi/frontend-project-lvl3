@@ -3,9 +3,11 @@ import * as yup from 'yup';
 import _ from 'lodash';
 import parseRss from './parser.js';
 
-const proxyUrl = 'https://allorigins.hexlet.app/get?disableCache=true&url=';
 const timeoutPeriod = 5000;
 let timeoutID;
+
+const proxy = (url) =>
+  `https://allorigins.hexlet.app/get?url=${encodeURIComponent(url)}&disableCache=true`;
 
 const checkNewPosts = (state) => {
   state.feeds.forEach((feed) => {
@@ -15,7 +17,7 @@ const checkNewPosts = (state) => {
 
     axios({
       method: 'get',
-      url: `${proxyUrl}${feed.rss}`,
+      url: proxy(feed.rss),
       timeout: 10000,
     })
       .then((response) => {
@@ -55,11 +57,11 @@ export default (state) => {
     .then(() => {
       state.form.error = null;
       state.form.valid = true;
-
       state.form.state = 'processing';
+
       axios({
         method: 'get',
-        url: `${proxyUrl}${url}`,
+        url: proxy(url),
         timeout: 1000,
       })
         .then((response) => {
