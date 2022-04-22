@@ -1,18 +1,29 @@
-import HtmlWebpackPlugin from 'html-webpack-plugin';
-import MiniCssExtractPlugin from 'mini-css-extract-plugin';
+const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
-export default {
+module.exports = {
   mode: process.env.NODE_ENV || 'development',
   entry: './src/index.js',
+  output: {
+    filename: 'bundle.js',
+    path: path.resolve(__dirname, 'dist'),
+  },
   devServer: {
     static: './dist',
   },
+  devtool: 'source-map',
   module: {
     rules: [
       {
-        test: /\.js$/,
-        enforce: 'pre',
-        use: ['source-map-loader'],
+        test: /\.m?js$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['@babel/preset-env'],
+          },
+        },
       },
       {
         test: /\.(c|sc|sa)ss$/i,

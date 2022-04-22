@@ -18,7 +18,7 @@ export default () => {
 
   const i18nextInstance = i18next.createInstance();
 
-  return i18nextInstance.init({ lng: 'ru', resources }, () => {
+  return i18nextInstance.init({ lng: 'en', resources }, () => {
     app(state, i18nextInstance);
   });
 };

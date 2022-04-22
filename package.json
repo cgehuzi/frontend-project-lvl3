@@ -1,11 +1,10 @@
 {
   "name": "@hexlet/code",
   "version": "1.0.0",
-  "description": "",
+  "description": "RSS Aggregator",
   "main": "./src/init.js",
-  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "build": "webpack"
   },
   "repository": {
@@ -19,8 +18,11 @@
   },
   "homepage": "https://github.com/cgehuzi/frontend-project-lvl3#readme",
   "devDependencies": {
+    "@babel/core": "^7.17.9",
+    "@babel/preset-env": "^7.16.11",
     "@jest/globals": "^27.5.1",
     "autoprefixer": "^10.4.4",
+    "babel-loader": "^8.2.5",
     "css-loader": "^6.7.1",
     "cssnano": "^5.1.7",
     "eslint": "^8.13.0",
@@ -34,7 +36,6 @@
     "postcss-loader": "^6.2.1",
     "sass": "^1.50.0",
     "sass-loader": "^12.6.0",
-    "source-map-loader": "^3.0.1",
     "webpack": "^5.72.0",
     "webpack-cli": "^4.9.2",
     "webpack-dev-server": "^4.8.1"
