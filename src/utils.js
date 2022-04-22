@@ -60,7 +60,7 @@ export default (state) => {
       axios({
         method: 'get',
         url: `${proxyUrl}${url}`,
-        timeout: 10000,
+        timeout: 1000,
       })
         .then((response) => {
           const rss = parseRss(response.data.contents, url);
@@ -72,13 +72,12 @@ export default (state) => {
           timeoutID = setTimeout(() => checkNewPosts(state), timeoutPeriod);
         })
         .catch((error) => {
-          console.log(error.status);
-          state.form.error = error.status ? error.message : 'error.network';
+          state.form.error = error.response ? error : new Error('error.network');
           state.form.state = 'failed';
         });
     })
-    .catch((err) => {
-      state.form.error = err.message;
+    .catch((error) => {
+      state.form.error = error;
       state.form.valid = false;
     });
 };

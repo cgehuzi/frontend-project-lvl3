@@ -11,7 +11,7 @@ export default (state, i18nextInstance, elements) => {
 
   const showError = () => {
     elements.feedback.classList.add('invalid-feedback');
-    elements.feedback.textContent = i18nextInstance.t(state.form.error);
+    elements.feedback.textContent = i18nextInstance.t(state.form.error.message);
     if (state.form.valid === false) {
       elements.input.classList.add('is-invalid');
     }
@@ -117,7 +117,7 @@ export default (state, i18nextInstance, elements) => {
         'd-flex',
         'justify-content-between',
         'align-items-baseline',
-        'border-0',
+        'border-0'
       );
 
       const link = document.createElement('a');

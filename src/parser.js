@@ -26,7 +26,9 @@ export default (data, rss) => {
   const feed = parser.parseFromString(data, 'application/xml');
 
   if (feed.querySelector('parsererror') !== null) {
-    throw new Error('error.notRss');
+    const error = new Error('error.notRss');
+    error.response = true;
+    throw error;
   }
 
   const link = feed.querySelector('channel > link').textContent;
