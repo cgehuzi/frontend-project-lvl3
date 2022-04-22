@@ -117,7 +117,7 @@ export default (state, i18nextInstance, elements) => {
         'd-flex',
         'justify-content-between',
         'align-items-baseline',
-        'border-0'
+        'border-0',
       );
 
       const link = document.createElement('a');
