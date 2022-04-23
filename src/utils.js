@@ -42,11 +42,7 @@ export default (state) => {
 
   const { url } = state.form.data;
   const rssUrls = state.feeds.map((feed) => feed.rss);
-  const schema = yup
-    .string()
-    .required('error.required')
-    .url('error.url')
-    .notOneOf(rssUrls, 'error.notOneOf');
+  const schema = yup.string().required('error.required').url('error.url').notOneOf(rssUrls, 'error.notOneOf');
 
   schema
     .validate(url)

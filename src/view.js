@@ -113,13 +113,7 @@ export default (state, i18nextInstance, elements) => {
 
     state.posts.forEach((post) => {
       const item = document.createElement('li');
-      item.classList.add(
-        'list-group-item',
-        'd-flex',
-        'justify-content-between',
-        'align-items-baseline',
-        'border-0',
-      );
+      item.classList.add('list-group-item', 'd-flex', 'justify-content-between', 'align-items-baseline', 'border-0');
 
       const link = document.createElement('a');
       if (post.isRead) {

@@ -1,10 +1,10 @@
-@import "custom";
-@import "~bootstrap/scss/bootstrap";
+@import 'custom';
+@import '~bootstrap/scss/bootstrap';
 
 .rss-modal {
-    &-details {
-        img {
-            max-width: 100%;
-        }
+  &-details {
+    img {
+      max-width: 100%;
     }
+  }
 }
