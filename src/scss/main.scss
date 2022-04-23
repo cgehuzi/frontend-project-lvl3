@@ -1,2 +1,10 @@
 @import "custom";
 @import "~bootstrap/scss/bootstrap";
+
+.rss-modal {
+    &-details {
+        img {
+            max-width: 100%;
+        }
+    }
+}

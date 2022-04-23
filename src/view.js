@@ -58,7 +58,7 @@ export default (state, i18nextInstance, elements) => {
 
     state.feeds.forEach((feed) => {
       const item = document.createElement('li');
-      item.classList.add('list-group-item', 'border-0');
+      item.classList.add('list-group-item', 'border-0', 'pb-3');
 
       const title = document.createElement('h3');
       title.classList.add('h6', 'm-0');
@@ -92,12 +92,13 @@ export default (state, i18nextInstance, elements) => {
   const showDetails = (id) => {
     const post = _.find(state.posts, { id });
 
-    const title = document.createElement('h5');
+    const title = document.createElement('h4');
+    title.classList.add('pb-4', 'mb-0', 'border-bottom');
     title.textContent = post.title;
 
-    const description = document.createElement('p');
-    description.classList.add('small', 'text-break');
-    description.textContent = post.description;
+    const description = document.createElement('div');
+    description.classList.add('small', 'text-break', 'pt-4');
+    description.innerHTML = post.description;
 
     elements.modalDetails.innerHTML = '';
     elements.modalDetails.append(title, description);
